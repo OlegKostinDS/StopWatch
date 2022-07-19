@@ -70,4 +70,37 @@ class MainActivity : AppCompatActivity() {
     private fun saveOffset() {
         offset = SystemClock.elapsedRealtime() - stopwatch.base
     }
+
+    override fun onStop() {
+        super.onStop()
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(running){
+            setBaseTime()
+            stopwatch.stop()
+            offset = 0
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(running){
+            saveOffset()
+            stopwatch.stop()
+        }
+    }
 }
